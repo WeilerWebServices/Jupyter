@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Migrating from IPython Notebook &#8212; Jupyter Documentation 4.1.1 alpha documentation</title>
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="https://assets.readthedocs.org/static/css/badge_only.css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.4/yeti/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="https://assets.readthedocs.org/static/javascript/readthedocs-doc-embed.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Architecture Guides" href="architecture/content-architecture.html" />
+    <link rel="prev" title="Running the Notebook" href="running.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="https://jupyter.readthedocs.io/en/latest/migrating.html" />
+
+<link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="text/javascript" src="_static/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = "migrating"
+READTHEDOCS_DATA['source_suffix'] = ".rst"
+</script>
+
+<script type="text/javascript" src="https://assets.readthedocs.org/static/javascript/readthedocs-analytics.js"></script>
+
+<!-- end RTD <extrahead> -->
+</head><body>
+<div class="container" style="background-color: white; text-align: left; padding: 10px 10px 15px 15px; width=100%; height=auto">
+<a href="index.html"><img src="_static/_images/jupyter.svg" border="0" alt="jupyter" width=200></a>
+</div>
+
+
+
+<div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">
+        Jupyter Documentation</a>
+      <span class="navbar-text navbar-version pull-left"><b>4.1</b></span>
+    </div>
+
+      <div class="collapse navbar-collapse nav-collapse">
+        <ul class="nav navbar-nav">
+          
+          
+          
+          
+        </ul>
+
+        
+          
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        
+        
+          
+            <ul class='nav navbar-nav navbar-right'>
+                
+  <li>
+    <a href="running.html" title="Previous Chapter: Running the Notebook"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Running the Notebook</span>
+    </a>
+  </li>
+  <li>
+    <a href="architecture/content-architecture.html" title="Next Chapter: Architecture Guides"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Architecture Guides &raquo;</span>
+    </a>
+  </li>
+            </ul>
+          
+        
+      </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="content-quickstart.html">Jupyter Notebook Quickstart</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tryjupyter.html">Try Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">Installing Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-kernel.html"><em>Optional:</em> Installing Kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html">Running the Notebook</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Migrating from IPython Notebook</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture/content-architecture.html">Architecture Guides</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="use-cases/content-user.html">Narratives and Use Cases</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ipython/content-ipython.html">IPython</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="projects/content-projects.html">Installation, Configuration, and Usage</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="community/content-community.html">Community Guides</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributor/content-contributor.html">Contributor Guides</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="releases/content-releases.html">Release Notes</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/content-reference.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="migrating-from-ipython-notebook">
+<span id="migrating"></span><h1>Migrating from IPython Notebook<a class="headerlink" href="#migrating-from-ipython-notebook" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#abstract" id="id1">Abstract</a></p></li>
+<li><p><a class="reference internal" href="#understanding-the-migration-process" id="id2">Understanding the Migration Process</a></p>
+<ul>
+<li><p><a class="reference internal" href="#automatic-migration-of-files" id="id3">Automatic migration of files</a></p></li>
+<li><p><a class="reference internal" href="#where-have-my-configuration-files-gone" id="id4">Where have my configuration files gone?</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#finding-the-location-of-important-files" id="id5">Finding the Location of Important Files</a></p>
+<ul>
+<li><p><a class="reference internal" href="#configuration-files" id="id6">Configuration files</a></p></li>
+<li><p><a class="reference internal" href="#data-files-kernelspecs-and-notebook-extensions" id="id7">Data files: kernelspecs and notebook extensions</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#since-jupyter-does-not-have-profiles-how-do-i-customize-it" id="id8">Since Jupyter does not have profiles, how do I customize it?</a></p>
+<ul>
+<li><p><a class="reference internal" href="#changing-the-jupyter-notebook-configuration-directory" id="id9">Changing the Jupyter notebook configuration directory</a></p></li>
+<li><p><a class="reference internal" href="#changing-the-jupyter-notebook-configuration-file" id="id10">Changing the Jupyter notebook configuration file</a></p></li>
+<li><p><a class="reference internal" href="#changing-ipython-s-profile-using-custom-kernelspecs" id="id11">Changing IPython’s profile using custom kernelspecs</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#understanding-installation-changes" id="id12">Understanding Installation Changes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#notebook-extensions" id="id13">Notebook extensions</a></p></li>
+<li><p><a class="reference internal" href="#kernels" id="id14">Kernels</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#understanding-changes-in-imports" id="id15">Understanding Changes in imports</a></p></li>
+</ul>
+</div>
+<div class="section" id="abstract">
+<h2><a class="toc-backref" href="#id1">Abstract</a><a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://blog.jupyter.org/the-big-split-9d7b88a031a7">The Big Split</a>
+moved IPython’s various language-agnostic components under the Jupyter
+umbrella. Going forward, Jupyter will contain the language-agnostic
+projects that serve many languages. IPython will continue to focus
+on Python and its use with Jupyter.</p>
+<p>This document describes what has changed, and how you may need to
+modify your code or configuration when migrating from IPython version 3 to
+Jupyter.</p>
+</div>
+<div class="section" id="understanding-the-migration-process">
+<h2><a class="toc-backref" href="#id2">Understanding the Migration Process</a><a class="headerlink" href="#understanding-the-migration-process" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="automatic-migration-of-files">
+<h3><a class="toc-backref" href="#id3">Automatic migration of files</a><a class="headerlink" href="#automatic-migration-of-files" title="Permalink to this headline">¶</a></h3>
+<p>The first time you run any <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> command, it will perform an automatic
+migration of files. The automatic migration process <strong>copies</strong> files,
+instead of moving files, leaving the originals in place and the copies in the
+Jupyter file locations. You can re-run the migration, if needed, by calling
+<code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">migrate</span></code>. Your custom configuration will be migrated automatically
+and should work with Jupyter without further editing. When you update or
+modify your configuration in the future, please keep in mind that the file
+locations may have changed.</p>
+</div>
+<div class="section" id="where-have-my-configuration-files-gone">
+<h3><a class="toc-backref" href="#id4">Where have my configuration files gone?</a><a class="headerlink" href="#where-have-my-configuration-files-gone" title="Permalink to this headline">¶</a></h3>
+<p>Also known as: “Why isn’t my configuration having any effect anymore?”</p>
+<p>Jupyter splitting out from IPython means that the locations of some
+files have moved, and Jupyter projects have not inherited everything
+from how IPython did it.</p>
+<p>When you start your first Jupyter application, the relevant configuration
+files are automatically copied to their new Jupyter locations. The original
+configuration files in the IPython locations have no effect on Jupyter’s
+execution. If you accidentally edit your original IPython config file, you may
+not see the desired effect with Jupyter now. You should check that you are
+editing Jupyter’s configuration file, and you should see the expected effect
+after restarting the Jupyter server.</p>
+</div>
+</div>
+<div class="section" id="finding-the-location-of-important-files">
+<h2><a class="toc-backref" href="#id5">Finding the Location of Important Files</a><a class="headerlink" href="#finding-the-location-of-important-files" title="Permalink to this headline">¶</a></h2>
+<p>This section provides quick reference for common locations of IPython 3 files
+and the migrated Jupyter files.</p>
+<div class="section" id="configuration-files">
+<h3><a class="toc-backref" href="#id6">Configuration files</a><a class="headerlink" href="#configuration-files" title="Permalink to this headline">¶</a></h3>
+<p>Configuration files customize Jupyter to the user’s preferences.
+The migrated files should all be <strong>automatically copied</strong> to their new Jupyter
+locations. Here are the location changes:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 4%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>IPython location</p></th>
+<th class="head"></th>
+<th class="head"><p>Jupyter location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="file docutils literal notranslate"><span class="pre">~/.ipython/profile_default/static/custom</span></code></p></td>
+<td><p>→</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">~/.jupyter/custom</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="file docutils literal notranslate"><span class="pre">~/.ipython/profile_default/ipython_notebook_config.py</span></code></p></td>
+<td><p>→</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">~/.jupyter/jupyter_notebook_config.py</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="file docutils literal notranslate"><span class="pre">~/.ipython/profile_default/ipython_nbconvert_config.py</span></code></p></td>
+<td><p>→</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">~/.jupyter/jupyter_nbconvert_config.py</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="file docutils literal notranslate"><span class="pre">~/.ipython/profile_default/ipython_qtconsole_config.py</span></code></p></td>
+<td><p>→</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">~/.jupyter/jupyter_qtconsole_config.py</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="file docutils literal notranslate"><span class="pre">~/.ipython/profile_default/ipython_console_config.py</span></code></p></td>
+<td><p>→</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">~/.jupyter/jupyter_console_config.py</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>To choose a directory location other than the default <code class="file docutils literal notranslate"><span class="pre">~/.jupyter</span></code>, set
+the <code class="docutils literal notranslate"><span class="pre">JUPYTER_CONFIG_DIR</span></code> environment variable. You may need to run
+<code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">migrate</span></code> after setting the environment variable for files to be
+copied to the desired directory.</p>
+</div>
+<div class="section" id="data-files-kernelspecs-and-notebook-extensions">
+<h3><a class="toc-backref" href="#id7">Data files: kernelspecs and notebook extensions</a><a class="headerlink" href="#data-files-kernelspecs-and-notebook-extensions" title="Permalink to this headline">¶</a></h3>
+<p>Data files include files, other than configuration files, which are
+user installed. Examples include kernelspecs and notebook extensions. Like
+the configuration files, data files are also <strong>automatically migrated</strong> to
+their new Jupyter locations.</p>
+<p>In <strong>IPython 3</strong>, data files lived in <code class="docutils literal notranslate"><span class="pre">~/.ipython</span></code>.</p>
+<p>In <strong>Jupyter</strong>, data files use platform-appropriate locations:</p>
+<ul class="simple">
+<li><p>OS X: <code class="docutils literal notranslate"><span class="pre">~/Library/Jupyter</span></code></p></li>
+<li><p>Windows: the location specified in <code class="docutils literal notranslate"><span class="pre">%APPDATA%</span></code> environment variable</p></li>
+<li><p>Elsewhere, <code class="docutils literal notranslate"><span class="pre">$XDG_DATA_HOME</span></code> is respected, with the default of
+<code class="docutils literal notranslate"><span class="pre">~/.local/share/jupyter</span></code></p></li>
+</ul>
+<p>In all cases, the <code class="docutils literal notranslate"><span class="pre">JUPYTER_DATA_DIR</span></code> environment variable can be used to set
+a location explicitly.</p>
+<p>Data files installed system-wide (e.g. in <code class="docutils literal notranslate"><span class="pre">/usr/local/share/jupyter</span></code>) have
+not changed. Per-user installation of data files has changed location from
+<code class="docutils literal notranslate"><span class="pre">.ipython</span></code> to the platform-appropriate Jupyter location.</p>
+</div>
+</div>
+<div class="section" id="since-jupyter-does-not-have-profiles-how-do-i-customize-it">
+<h2><a class="toc-backref" href="#id8">Since Jupyter does not have profiles, how do I customize it?</a><a class="headerlink" href="#since-jupyter-does-not-have-profiles-how-do-i-customize-it" title="Permalink to this headline">¶</a></h2>
+<p>While IPython has the concept of <a class="reference internal" href="glossary.html#term-profiles"><span class="xref std std-term">profiles</span></a>, <strong>Jupyter does not have
+profiles</strong>.</p>
+<p>In IPython, profiles are collections of configuration and runtime files.
+Inside the IPython directory (<code class="docutils literal notranslate"><span class="pre">~/.ipython</span></code>), there are directories with
+names like <code class="docutils literal notranslate"><span class="pre">profile_default</span></code> or <code class="docutils literal notranslate"><span class="pre">profile_demo</span></code>. In each of these are
+configuration files (<code class="docutils literal notranslate"><span class="pre">ipython_config.py</span></code>, <code class="docutils literal notranslate"><span class="pre">ipython_notebook_config.py</span></code>)
+and runtime files (<code class="docutils literal notranslate"><span class="pre">history.sqlite</span></code>, <code class="docutils literal notranslate"><span class="pre">security/kernel-*.json</span></code>). Profiles
+could be used to switch between configurations of IPython.</p>
+<p>Previously, people could use commands like <code class="docutils literal notranslate"><span class="pre">ipython</span> <span class="pre">notebook</span> <span class="pre">--profile</span> <span class="pre">demo</span></code>
+to set the profile for <em>both</em> the notebook server and the IPython kernel.
+This is no longer possible in one go with Jupyter, just like it wasn’t
+possible in IPython 3 for any other kernels.</p>
+<div class="section" id="changing-the-jupyter-notebook-configuration-directory">
+<h3><a class="toc-backref" href="#id9">Changing the Jupyter notebook configuration directory</a><a class="headerlink" href="#changing-the-jupyter-notebook-configuration-directory" title="Permalink to this headline">¶</a></h3>
+<p>If you want to change the notebook configuration, you can set the
+<code class="docutils literal notranslate"><span class="pre">JUPYTER_CONFIG_DIR</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">JUPYTER_CONFIG_DIR</span><span class="o">=</span>./jupyter_config
+jupyter notebook
+</pre></div>
+</div>
+</div>
+<div class="section" id="changing-the-jupyter-notebook-configuration-file">
+<h3><a class="toc-backref" href="#id10">Changing the Jupyter notebook configuration file</a><a class="headerlink" href="#changing-the-jupyter-notebook-configuration-file" title="Permalink to this headline">¶</a></h3>
+<p>If you just want to change the config file, you can do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter notebook --config<span class="o">=</span>/path/to/myconfig.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="changing-ipython-s-profile-using-custom-kernelspecs">
+<h3><a class="toc-backref" href="#id11">Changing IPython’s profile using custom kernelspecs</a><a class="headerlink" href="#changing-ipython-s-profile-using-custom-kernelspecs" title="Permalink to this headline">¶</a></h3>
+<p>If you do want to change the IPython kernel’s profile, you
+can’t do this at the server command-line anymore. Kernel arguments must
+be changed by modifying the kernelspec. You can do this without relaunching
+the server. Kernelspec changes take effect every time you start a new kernel.
+However, there isn’t a great way to modify the kernelspecs.
+One approach uses <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">kernelspec</span> <span class="pre">list</span></code> to find the
+<code class="docutils literal notranslate"><span class="pre">kernel.json</span></code> file and then modifies it, e.g. <code class="docutils literal notranslate"><span class="pre">kernels/python3/kernel.json</span></code>,
+by hand. Alternatively, <a class="reference external" href="https://github.com/minrk/a2km">a2km</a> is an
+experimental project that tries to make these things easier.</p>
+<p>For example, add the <code class="docutils literal notranslate"><span class="pre">--profile</span></code> option to a custom kernelspec under <code class="docutils literal notranslate"><span class="pre">kernels/mycustom/kernel.json</span></code>
+(see the Jupyter kernelspec directions
+<a class="reference external" href="https://jupyter-client.readthedocs.io/en/latest/kernels.html#kernel-specs">here</a>):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+ <span class="nt">&quot;argv&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;ipykernel&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;--profile=my-ipython-profile&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;-f&quot;</span><span class="p">,</span> <span class="s2">&quot;{connection_file}&quot;</span><span class="p">],</span>
+ <span class="nt">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Custom Profile Python&quot;</span><span class="p">,</span>
+ <span class="nt">&quot;language&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can then run Jupyter with the <code class="docutils literal notranslate"><span class="pre">--kernel=mycustom</span></code> command-line option and IPython
+will find the appropriate profile.</p>
+</div>
+</div>
+<div class="section" id="understanding-installation-changes">
+<h2><a class="toc-backref" href="#id12">Understanding Installation Changes</a><a class="headerlink" href="#understanding-installation-changes" title="Permalink to this headline">¶</a></h2>
+<p>See the <a class="reference internal" href="install.html#install"><span class="std std-ref">Installing Jupyter Notebook</span></a> page for more information about
+installing Jupyter. Jupyter automatically migrates some things,
+like Notebook extensions and kernels.</p>
+<div class="section" id="notebook-extensions">
+<h3><a class="toc-backref" href="#id13">Notebook extensions</a><a class="headerlink" href="#notebook-extensions" title="Permalink to this headline">¶</a></h3>
+<p>Any IPython notebook extensions should be <strong>automatically migrated</strong> as part
+of the data files migration.</p>
+<p>Notebook extensions were installed with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ipython install-nbextension <span class="o">[</span>--user<span class="o">]</span> EXTENSION
+</pre></div>
+</div>
+<p>Now, extensions are installed with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter nbextension install <span class="o">[</span>--user<span class="o">]</span> EXTENSION
+</pre></div>
+</div>
+<p>The notebook extensions will be installed in a system-wide location (e.g.
+<code class="docutils literal notranslate"><span class="pre">/usr/local/share/jupyter/nbextensions</span></code>). If doing a <code class="docutils literal notranslate"><span class="pre">--user</span></code>
+install, the notebook extensions will go in the <code class="docutils literal notranslate"><span class="pre">JUPYTER_DATA_DIR</span></code> location.
+Installation <strong>SHOULD NOT</strong> be done manually by guessing where the files
+should go.</p>
+</div>
+<div class="section" id="kernels">
+<h3><a class="toc-backref" href="#id14">Kernels</a><a class="headerlink" href="#kernels" title="Permalink to this headline">¶</a></h3>
+<p>Kernels are installed in much the same way as notebook extensions. They will
+also be <strong>automatically migrated</strong>.</p>
+<p>Kernel specs used to be installed with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ipython kernelspec install <span class="o">[</span>--user<span class="o">]</span> KERNEL
+</pre></div>
+</div>
+<p>They are now installed with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter kernelspec install <span class="o">[</span>--user<span class="o">]</span> KERNEL
+</pre></div>
+</div>
+<p>By default, kernel specs will go in a system-wide location
+(e.g. <code class="docutils literal notranslate"><span class="pre">/usr/local/share/jupyter/kernels</span></code>). If doing a <code class="docutils literal notranslate"><span class="pre">--user</span></code> install,
+the kernel specs will go in the <code class="docutils literal notranslate"><span class="pre">JUPYTER_DATA_DIR</span></code> location. Installation
+<strong>SHOULD NOT</strong> be done manually by guessing where the files should go.</p>
+</div>
+</div>
+<div class="section" id="understanding-changes-in-imports">
+<h2><a class="toc-backref" href="#id15">Understanding Changes in imports</a><a class="headerlink" href="#understanding-changes-in-imports" title="Permalink to this headline">¶</a></h2>
+<p>IPython 4.0 includes shims to manage dependencies; so, all imports that work
+on IPython 3 should continue to work on IPython 4. If you find any
+differences, please <a class="reference external" href="https://github.com/ipython/ipython/issues">let us know</a>.</p>
+<p>Some changes include:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 7%" />
+<col style="width: 47%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>IPython 3</p></th>
+<th class="head"></th>
+<th class="head"><p>Jupyter and IPython 4.0</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IPython.html</span></code></p></td>
+<td><p>→</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">notebook</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">IPython.html.widgets</span></code></p></td>
+<td><p>→</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IPython.kernel</span></code></p></td>
+<td><p>→</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">jupyter_client</span></code>, <code class="docutils literal notranslate"><span class="pre">ipykernel</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">IPython.parallel</span></code></p></td>
+<td><p>→</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ipyparallel</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IPython.qt.console</span></code></p></td>
+<td><p>→</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">qtconsole</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">IPython.utils.traitlets</span></code></p></td>
+<td><p>→</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">traitlets</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">IPython.config</span></code></p></td>
+<td><p>→</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">traitlets.config</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">IPython.kernel</span></code> Split</p>
+<p><code class="docutils literal notranslate"><span class="pre">IPython.kernel</span></code> became two packages:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">jupyter_client</span></code> for the Jupyter client-side APIs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ipykernel</span></code> for Jupyter’s IPython kernel</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<div class="pull-center">
+	<ul class="pager">
+	  
+	  <li class="previous"><a href="running.html">&larr; Previous</a></li>
+	  
+	  
+	  <li class="next"><a href="architecture/content-architecture.html">Next &rarr;</a></li>
+	  
+	</ul>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, Jupyter Team, https://jupyter.org.<br/>
+      Last updated on 2019-11-16.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.<br/>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>
